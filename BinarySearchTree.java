@@ -40,6 +40,9 @@ public class BinarySearchTree {
             return root;
         }
 
+        // If the node to be deleted is a leaf node, it will be removed
+        // If the node to be deleted has just one child node, it will be replaced with the child node
+        // If the node to be deleted has two child nodes, we find its inorder successor or predecessor
         if (key < root.key) {
             root.left = deleteRec(root.left, key);
         } else if (key > root.key) {
@@ -66,5 +69,70 @@ public class BinarySearchTree {
         }
 
         return minv;
+    }
+
+    // Search operation
+    boolean search(int key) {
+        return searchRec(root, key);
+    }
+
+    boolean searchRec(Node root, int key) {
+        // We start at the root and compare the target key with the current key
+        // If the target key is less than the current key, it will search the left subtree
+        // If the target key is greater than the current key, it will search the right subtree
+        // If the target key is equal to the current key, the node has been found
+        // Otherwise, we reach the null node
+        if (root == null) {
+            return false;
+        }
+        if (root.key == key) {
+            return true;
+        }
+        if (root.key < key) {
+            return searchRec(root.right, key);
+        }
+        return searchRec(root.left, key);
+    }
+
+    // Inorder traversal
+    void inorder() {
+        inorderRec(root);
+        System.out.println("\n");
+    }
+
+    void inorderRec(Node root) {
+        if (root != null) {
+            inorderRec(root.left);
+            System.out.println(root.key + " ");
+            inorderRec(root.right);
+        }
+    }
+
+    // Preorder traversal
+    void preoder() {
+        preorderRec(root);
+        System.out.println("\n");
+    }
+
+    void preorderRec(Node root) {
+        if (root != null) {
+            System.out.println(root.key + " ");
+            preorderRec(root.left);
+            preorderRec(root.right);
+        }
+    }
+
+    // Postorder traversal
+    void postorder() {
+        postorderRec(root);
+        System.out.println("\n");
+    }
+
+    void postorderRec(Node root) {
+        if (root != null) {
+            postorderRec(root.left);
+            postorderRec(root.right);
+            System.out.println(root.key + " ");
+        }
     }
 }
