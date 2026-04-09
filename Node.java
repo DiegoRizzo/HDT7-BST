@@ -1,12 +1,14 @@
 // Obtenido de GeeksForGeeks - Java Program to Construct a Binary Search Tree
 
 public class Node {
-    int key;
+    
+    Palabra palabra;
     Node left;
     Node right;
 
-    public Node(int item) {
-        key = item;
+    public Node(Palabra item) {
+        palabra = item;
         left = right = null;
     }
+
 }
