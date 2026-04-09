@@ -18,6 +18,8 @@ public class Palabra {
         return frances;
     }
 
+    // Método para normalizar las palabras, eliminando acentos y convirtiendo la palabra a minúsculas
+    // Esto significa que "é" se convertirá en "e", con el fin de ordenar las palabras en orden alfabético sin considerar los acentos.
     public String normalize(String texto) {
         String normalized = Normalizer.normalize(texto, Normalizer.Form.NFD);
         normalized = normalized.replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
